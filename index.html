@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-switcher.css" />
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"
+/>
+
+</head>
+<body>
+  <aside class="aside">
+        <div class="profile">
+            <img src="./image/sd.jpg" alt="Your Name" class="profile-img" />
+            <h2>Daniel</h2>
+        </div>
+        
+        <nav class="nav">
+            <button class="nav-toggle" aria-label="Toggle Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+            <ul>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+</aside>
+      
+
+
+  <main class="main-content">
+    <section id="home" class="section home-section">
+      <div class="home-content">
+        <h1>Hello, I'm <span class="name">Daniel Tetteh</span></h1>
+        <h2 class="typing"></h2>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate graphic designer and software developer with
+        experience in creating modern, minimalistic, and professional
+        websites and designs.
+      </p>
+    </section>
+
+    <section id="services" class="section services-section">
+      <h2>Services</h2>
+      <div class="services-list">
+        <div class="service-card">
+          <i class="fas fa-paint-brush service-icon"></i>
+          <h3>Graphic Design</h3>
+          <p>Creative branding and visual identity solutions.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-code service-icon"></i>
+          <h3>Web Development</h3>
+          <p>Building responsive and dynamic websites and apps.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-mobile-alt service-icon"></i>
+          <h3>UI/UX Design</h3>
+          <p>User-friendly interfaces and experiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section">
+      <h2>Portfolio</h2>
+
+  <div class="portfolio-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="website">Website</button>
+    <button class="filter-btn" data-filter="mobile-app">Mobile App</button>
+    <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+  </div>
+
+  <div class="portfolio-gallery">
+    <!-- Example projects -->
+    <div class="portfolio-item" data-category="website">
+      <img src="/image/website-project1.jpg" alt="Website Project 1" />
+      <h3>Website Project 1</h3>
+    </div>
+    <div class="portfolio-item" data-category="mobile-app">
+      <img src="./image/port4.jpg" alt="Mobile App Project 1" />
+      <h3>Mobile App Project 1</h3>
+    </div>
+      <div class="portfolio-item" data-category="graphic-design">
+      <!-- <img src=" " alt="Graphic Design Project 1" /> -->
+      <h3>Graphic Design Project 1</h3>
+    </div>
+    <div class="portfolio-item" data-category="graphic-design">
+      <!-- <img src=" " alt="Graphic Design Project 1" /> -->
+      <h3>Graphic Design Project 1</h3>
+    </div>
+     <div class="portfolio-item" data-category="website">
+      <img src="/image/website-project1.jpg" alt="Website Project 1" />
+      <h3>Website Project 1</h3>
+    </div>
+    <!-- Add more projects as needed -->
+  </div>
+</section>
+
+
+    <section id="contact" class="section contact-section">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="from_name"
+            required
+            placeholder="Your Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="reply_to"
+            required
+            placeholder="Your Email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Your Message"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <span class="btn-text">Send</span>
+          <span class="btn-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Sending...
+          </span>
+        </button>
+        <p class="form-status"></p>
+      </form>
+    </section>
+  </main>
+
+  <div class="style-switcher">
+    <button class="switcher-toggle" aria-label="Open style switcher">
+      <i class="fas fa-cog fa-spin"></i>
+    </button>
+    <div class="switcher-panel">
+      <h3>Theme Colors</h3>
+      <div class="colors">
+        <button class="color-btn" data-color="color-1" style="background:#FF6B6B"></button>
+        <button class="color-btn" data-color="color-2" style="background:#6BCB77"></button>
+        <button class="color-btn" data-color="color-3" style="background:#4D96FF"></button>
+        <button class="color-btn" data-color="color-4" style="background:#FFD93D"></button>
+        <button class="color-btn" data-color="color-5" style="background:#845EC2"></button>
+      </div>
+      <hr />
+      <h3>Mode</h3>
+      <label class="switch">
+        <input type="checkbox" id="mode-toggle" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script src="style-switcher.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.2cdn.jsdelivr.net/npm/typed.js@2.1.2"></script> -->
+  <script src="script.js"></script>
+</body>
+</html>
