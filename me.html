@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Play Project Slider with Lightbox Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+      height: 200px;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    /* Hover effect: show all images in a grid */
+    .slider:hover .slides {
+      transform: none !important; /* cancel auto-slide transform */
+      width: 100%;
+      flex-wrap: wrap;
+      overflow-y: auto;
+    }
+
+    .slider:hover .slides img {
+      width: 50%; /* 2 images per row */
+      height: auto;
+    }
+
+    .project-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .project-info h3 {
+      margin: 10px 0;
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+    }
+
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .lightbox .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      padding: 10px;
+    }
+
+    .lightbox .arrow.left {
+      left: 20px;
+    }
+
+    .lightbox .arrow.right {
+      right: 20px;
+    }
+
+    .lightbox .arrow:hover,
+    .lightbox .close:hover {
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Previous Projects</h1>
+
+  <div class="projects">
+    <!-- Project Card 1 -->
+    <div class="project-card">
+      <div class="slider">
+        <div class="slides">
+          <img src="signpost.jpg" alt="Project 2 Img1">
+                  <img src="calender.jpg" alt="Project 2 Img2">
+                  <img src="3 copy.jpg" alt="Project 2 Img3">
+                  <img src="gracefiekd pres.jpg" alt="Project 2 Img4">
+                  <img src="gracefield.jpg" alt="Project 2 Img5">
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Mobile App Project</h3>
+        <p>Example of mobile application project done.</p>
+      </div>
+    </div>
+
+    <!-- Project Card 2 -->
+    <div class="project-card">
+      <div class="slider">
+        <div class="slides">
+          <img src="signpost.jpg" alt="Project 2 Img1">
+          <img src="calender.jpg" alt="Project 2 Img2">
+          <img src="3 copy.jpg" alt="Project 2 Img3">
+          <img src="gracefiekd pres.jpg" alt="Project 2 Img4">
+          <img src="gracefield.jpg" alt="Project 2 Img5">
+        </div>
+      </div>
+      <div class="project-info">
+        <h3>Website Design Project</h3>
+        <p>Example of a responsive website project done.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" id="lightboxClose">&times;</span>
+    <span class="arrow left" id="prev">&#10094;</span>
+    <img src="" alt="Full view" id="lightboxImg">
+    <span class="arrow right" id="next">&#10095;</span>
+  </div>
+
+  <script>
+    // Autoplay logic
+    document.querySelectorAll(".project-card").forEach((card) => {
+      const slider = card.querySelector(".slider");
+      const slides = card.querySelector(".slides");
+      const totalSlides = slides.children.length;
+      let index = 0;
+      let interval;
+
+      function startSlider() {
+        interval = setInterval(() => {
+          index = (index + 1) % totalSlides;
+          slides.style.transform = `translateX(-${index * 100}%)`;
+        }, 2500);
+      }
+
+      function stopSlider() {
+        clearInterval(interval);
+      }
+
+      // Start autoplay
+      startSlider();
+
+      // Pause autoplay on hover
+      slider.addEventListener("mouseenter", stopSlider);
+      slider.addEventListener("mouseleave", () => {
+        slides.style.flexWrap = "nowrap";
+        index = 0;
+        slides.style.transform = `translateX(0%)`;
+        startSlider();
+      });
+    });
+
+    // Lightbox logic
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    let currentIndex = 0;
+    let currentImages = [];
+
+    document.querySelectorAll(".slides img").forEach((img) => {
+      img.addEventListener("click", (e) => {
+        const slidesContainer = e.target.closest(".slides");
+        currentImages = Array.from(slidesContainer.querySelectorAll("img"));
+        currentIndex = currentImages.indexOf(e.target);
+        showImage(currentIndex);
+        lightbox.classList.add("active");
+      });
+    });
+
+    function showImage(index) {
+      lightboxImg.src = currentImages[index].src;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      showImage(currentIndex);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      showImage(currentIndex);
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("active");
+      }
+    });
+
+    // Optional: support keyboard arrows
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("active")) return;
+      if (e.key === "ArrowRight") nextBtn.click();
+      if (e.key === "ArrowLeft") prevBtn.click();
+      if (e.key === "Escape") lightboxClose.click();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,12 +1,3 @@
-// Initialize Typed.js for typing animation
-const typed = new Typed('.typing', {
-  strings: ["Mobile Developer", "Graphic Designer", "Software Developer"],
-  typeSpeed: 100,
-  backSpeed: 50,
-  backDelay: 1500,
-  loop: true,
-});
-
 const filterButtons = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
@@ -110,4 +101,18 @@ contactForm.addEventListener('submit', function (e) {
       btnText.style.display = 'inline';
       btnLoading.style.display = 'none';
     });
+});
+
+
+// Only enable sliding for portfolio items in the "graphic designer" category
+document.querySelectorAll('.portfolio-item[data-category="graphic designer"]').forEach((card) => {
+  const slides = card.querySelector(".slides");
+  if (!slides) return;
+  const totalSlides = slides.children.length;
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % totalSlides;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }, 2500); // change image every 2.5 seconds
 });

@@ -10,6 +10,7 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
 />
+<link rel="stylesheet" href="slide.css" />
   <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"
@@ -19,7 +20,7 @@
 <body>
   <aside class="aside">
         <div class="profile">
-            <img src="./image/sd.jpg" alt="Your Name" class="profile-img" />
+            <img src="sd.jpg" alt="Your Name" class="profile-img" />
             <h2>Daniel</h2>
         </div>
         
@@ -74,7 +75,16 @@
           <h3>UI/UX Design</h3>
           <p>User-friendly interfaces and experiences.</p>
         </div>
+        <div class="service-card">
+          <i class="fas fa-camera-retro service-icon"></i>
+          <h3>Photography</h3>
+          <p>Capturing moments with professional photography.</p>
       </div>
+        <div class="service-card">
+          <i class="fas fa-video service-icon"></i>
+          <h3>Videography</h3>
+          <p>High-quality video production and editing.</p>
+        </div>
     </section>
 
     <section id="portfolio" class="section">
@@ -85,29 +95,78 @@
     <button class="filter-btn" data-filter="website">Website</button>
     <button class="filter-btn" data-filter="mobile-app">Mobile App</button>
     <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+    <button class="filter-btn" data-filter="photography">Photography</button>
+    <button class="filter-btn" data-filter="videography">Videography</button>
   </div>
 
   <div class="portfolio-gallery">
     <!-- Example projects -->
-    <div class="portfolio-item" data-category="website">
-      <img src="/image/website-project1.jpg" alt="Website Project 1" />
-      <h3>Website Project 1</h3>
-    </div>
-    <div class="portfolio-item" data-category="mobile-app">
-      <img src="./image/port4.jpg" alt="Mobile App Project 1" />
-      <h3>Mobile App Project 1</h3>
-    </div>
+        <div class="portfolio-item" data-category="graphic-design">
+          <div class="slider">
+              <div class="slides">
+                  <img src="signpost.jpg" alt="Project 2 Img1">
+                  <img src="calender.jpg" alt="Project 2 Img2">
+                  <img src="3 copy.jpg" alt="Project 2 Img3">
+                  <img src="gracefiekd pres.jpg" alt="Project 2 Img4">
+                  <img src="gracefield.jpg" alt="Project 2 Img5">
+                  
+              </div>     
+          </div> 
+          <a href="#"> <h3>GraceField Project</h3></a> 
+        </div>
+
+        <div class="portfolio-item" data-category="graphic-design">
+          <div class="slider">
+            <div class="slides">
+              <img src="kan new copy.jpg" alt="Project 2 Img1">
+              <img src="PSD_3 copy.jpg" alt="Project 2 Img2">
+              <img src="office.jpg" alt="Project 2 Img3">
+               
+           </div>     
+        </div>
+        <a href="#"><h3>KAN Project</h3></a> 
+      </div>
+
       <div class="portfolio-item" data-category="graphic-design">
-      <!-- <img src=" " alt="Graphic Design Project 1" /> -->
-      <h3>Graphic Design Project 1</h3>
+        <div class="slider">
+          <div class="slides">
+              <img src="liberty pres.jpg" alt="Project 2 Img1">
+              <img src="bottle.jpg" alt="Project 2 Img2">
+              <img src="Sign.jpg" alt="Project 2 Img3">
+              <img src="tag.jpg" alt="Project 2 Img4">
+              <img src="4.jpg" alt="Project 2 Img5">
+              <img src="kc.jpg" alt="Project 2 Img6">
+              
+           </div>     
+         </div> 
+         <a href="#"><h3>Liberty CreditProject</h3></a>
+      </div>
+
+      <div class="portfolio-item1" data-category="website">
+        <img src="LoveWorld2.jpg" alt="Website Project 1" />
+        <a href="http://Loveworldteensandyouthministry.com"><h3>LoveWorld Teens And Youth Website 2</h3></a>
+      </div>
     </div>
-    <div class="portfolio-item" data-category="graphic-design">
-      <!-- <img src=" " alt="Graphic Design Project 1" /> -->
-      <h3>Graphic Design Project 1</h3>
+    <div>
+      <div class="portfolio-item1" data-category="website">
+        <img src="LoveWorld.jpg" alt="LoveWorld" />
+        <a href="http://Loveworldteensandyouthministry.org"><h3>LoveWorld Teens And Youth Website 1</h3></a>
+      </div>
+      <div class="portfolio-item1" data-category="website">
+        <img src="LoveWorld2.jpg" alt="Website Project 1" />
+        <a href="http://Loveworldteensandyouthministry.com"><h3>LoveWorld Teens And Youth Website 2</h3></a>
+      </div>
     </div>
-     <div class="portfolio-item" data-category="website">
-      <img src="/image/website-project1.jpg" alt="Website Project 1" />
-      <h3>Website Project 1</h3>
+
+    <div>
+      <div class="portfolio-item1" data-category="mobile-app">
+        <img src="App.jpg" alt="Mobile App Project 1" />
+        <a href="http://Ireign.app"><h3>Reign App</h3></a>
+      </div>
+      <div class="portfolio-item1" data-category="mobile-app">
+        <img src="./image/port4.jpg" alt="Mobile App Project 1" />
+        <a href=""><h3>Mobile App Project 1</h3></a>
+      </div>
     </div>
     <!-- Add more projects as needed -->
   </div>
@@ -180,13 +239,24 @@
     </div>
   </div>
 
+   <!-- Lightbox -->
+   <div class="lightbox" id="lightbox">
+    <span class="close" id="lightboxClose">&times;</span>
+    <span class="arrow left" id="prev">&#10094;</span>
+    <img src="" alt="Full view" id="lightboxImg">
+    <span class="arrow right" id="next">&#10095;</span>
+  </div>
+
   <!-- Typed.js -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
+   
   <script src="style-switcher.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.2cdn.jsdelivr.net/npm/typed.js@2.1.2"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.2cdn.jsdelivr.net/npm/typed.js@2.1.2"></script>
   <script src="script.js"></script>
+  <script src="slide.js"></script>
+  <script src="type.js"></script>
+
 </body>
 </html>
