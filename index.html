@@ -1,262 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="style-switcher.css" />
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-/>
-<link rel="stylesheet" href="slide.css" />
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"
-/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daniel Tetteh — Portfolio | Software Developer & Designer</title>
+  <meta name="description" content="Portfolio of Daniel Tetteh — Software developer and graphic/UI designer. Selected work in web, apps, and brand design. Available for full-time and contract roles." />
+  <link rel="canonical" href="https://example.com/" />
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Daniel Tetteh — Software Developer & Designer" />
+  <meta property="og:description" content="Selected work in web, apps, and brand design. Available for full-time and contract roles." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="sd.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="sd.jpg" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SomeHash" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="slide.css" />
+  <link rel="stylesheet" href="style-switcher.css" />
+
+  <!-- NProgress (CSS only; JS loaded at end) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-bQ1iG8d2g9+f5H7P6JHnUOQwq0S1m0+oZr7eGg8c9A2v+o0lqYQe2eSVg1x3v5YxC8W3bO5kE0u3oWbL1LQ3JQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Prevent theme FOUC: set theme ASAP -->
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('mode') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const savedColor = localStorage.getItem('selectedColor');
+        if (savedColor) {
+          const colors = {
+            'color-1':'#FF6B6B','color-2':'#6BCB77','color-3':'#4D96FF','color-4':'#FFD93D','color-5':'#845EC2'
+          };
+          const c = colors[savedColor] || '#4D96FF';
+          document.documentElement.style.setProperty('--color-primary', c);
+          document.documentElement.style.setProperty('--color-accent', c);
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Schema.org (Person) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Daniel Tetteh",
+    "jobTitle":"Software Developer & Designer",
+    "image":"sd.jpg",
+    "url":"https://example.com/",
+    "sameAs":[]
+  }
+  </script>
 </head>
 <body>
-  <aside class="aside">
-        <div class="profile">
-            <img src="sd.jpg" alt="Your Name" class="profile-img" />
-            <h2>Daniel</h2>
-        </div>
-        
-        <nav class="nav">
-            <button class="nav-toggle" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-        </button>
-            <ul>
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-</aside>
-      
+  <!-- Sidebar -->
+  <aside class="aside" aria-label="Sidebar">
+    <div class="profile">
+      <img src="sd.jpg" alt="Portrait of Daniel Tetteh" class="profile-img" />
+      <h2>Daniel</h2>
+    </div>
 
+    <!-- HTML -->
+<button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+  <i class="fas fa-bars"></i>
+</button>
 
+<nav class="nav">
+  <ul>
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+</nav>
+
+  </aside>
+
+  <!-- Main -->
   <main class="main-content">
-    <section id="home" class="section home-section">
+    <!-- Home -->
+    <section id="home" class="section home-section" aria-labelledby="home-title">
       <div class="home-content">
-        <h1>Hello, I'm <span class="name">Daniel Tetteh</span></h1>
-        <h2 class="typing"></h2>
+        <h1 id="home-title">Hello, I’m <span class="name">Daniel Tetteh</span></h1>
+        <h2 class="typing" aria-live="polite"></h2>
+        <div class="home-cta">
+          <a class="btn btn-primary" href="#portfolio">View Work</a>
+          <a class="btn btn-ghost" href="#contact">Contact Me</a>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="section about-section">
-      <h2>About Me</h2>
+    <!-- About -->
+    <section id="about" class="section about-section" aria-labelledby="about-title">
+      <h2 id="about-title">About Me</h2>
       <p>
-        I am a passionate graphic designer and software developer with
-        experience in creating modern, minimalistic, and professional
-        websites and designs.
+        I’m a software developer and multidisciplinary designer focused on building
+        fast, accessible, and delightful digital experiences. I blend modern engineering
+        with brand-level design to ship products that feel premium.
       </p>
     </section>
 
-    <section id="services" class="section services-section">
-      <h2>Services</h2>
+    <!-- Services -->
+    <section id="services" class="section services-section" aria-labelledby="services-title">
+      <h2 id="services-title">Services</h2>
       <div class="services-list">
         <div class="service-card">
-          <i class="fas fa-paint-brush service-icon"></i>
-          <h3>Graphic Design</h3>
-          <p>Creative branding and visual identity solutions.</p>
+          <i class="fas fa-paint-brush service-icon" aria-hidden="true"></i>
+          <h3>Brand & Graphic Design</h3>
+          <p>Premium visual identity systems, marketing assets, and product visuals.</p>
         </div>
         <div class="service-card">
-          <i class="fas fa-code service-icon"></i>
+          <i class="fas fa-code service-icon" aria-hidden="true"></i>
           <h3>Web Development</h3>
-          <p>Building responsive and dynamic websites and apps.</p>
+          <p>High-performance, responsive, and accessible websites & web apps.</p>
         </div>
         <div class="service-card">
-          <i class="fas fa-mobile-alt service-icon"></i>
+          <i class="fas fa-mobile-alt service-icon" aria-hidden="true"></i>
           <h3>UI/UX Design</h3>
-          <p>User-friendly interfaces and experiences.</p>
+          <p>Product thinking, wireframes, prototypes, and polished interfaces.</p>
         </div>
         <div class="service-card">
-          <i class="fas fa-camera-retro service-icon"></i>
+          <i class="fas fa-camera-retro service-icon" aria-hidden="true"></i>
           <h3>Photography</h3>
-          <p>Capturing moments with professional photography.</p>
-      </div>
-        <div class="service-card">
-          <i class="fas fa-video service-icon"></i>
-          <h3>Videography</h3>
-          <p>High-quality video production and editing.</p>
+          <p>Brand photography, product shoots, and editorial retouching.</p>
         </div>
+        <div class="service-card">
+          <i class="fas fa-video service-icon" aria-hidden="true"></i>
+          <h3>Videography</h3>
+          <p>Launch videos, promos, and motion pieces for campaigns.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="portfolio" class="section">
-      <h2>Portfolio</h2>
+    <!-- Portfolio -->
+    <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title">Selected Work</h2>
 
-  <div class="portfolio-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="website">Website</button>
-    <button class="filter-btn" data-filter="mobile-app">Mobile App</button>
-    <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
-    <button class="filter-btn" data-filter="photography">Photography</button>
-    <button class="filter-btn" data-filter="videography">Videography</button>
-  </div>
+      <div class="portfolio-filters" role="tablist" aria-label="Portfolio filters">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="website" role="tab">Website</button>
+        <button class="filter-btn" data-filter="mobile-app" role="tab">Mobile App</button>
+        <button class="filter-btn" data-filter="graphic-design" role="tab">Graphic Design</button>
+        <button class="filter-btn" data-filter="photography" role="tab">Photography</button>
+        <button class="filter-btn" data-filter="videography" role="tab">Videography</button>
+      </div>
 
-  <div class="portfolio-gallery">
-    <!-- Example projects -->
-        <div class="portfolio-item" data-category="graphic-design">
-          <div class="slider">
-              <div class="slides">
-                  <img src="signpost.jpg" alt="Project 2 Img1">
-                  <img src="calender.jpg" alt="Project 2 Img2">
-                  <img src="3 copy.jpg" alt="Project 2 Img3">
-                  <img src="gracefiekd pres.jpg" alt="Project 2 Img4">
-                  <img src="gracefield.jpg" alt="Project 2 Img5">
-                  
-              </div>     
-          </div> 
-          <a href="#"> <h3>GraceField Project</h3></a> 
-        </div>
-
-        <div class="portfolio-item" data-category="graphic-design">
-          <div class="slider">
+      <div class="portfolio-gallery">
+        <!-- Graphic Design: GraceField -->
+        <article class="portfolio-item" data-category="graphic-design">
+          <div class="slider" aria-label="GraceField Project gallery">
             <div class="slides">
-              <img src="kan new copy.jpg" alt="Project 2 Img1">
-              <img src="PSD_3 copy.jpg" alt="Project 2 Img2">
-              <img src="office.jpg" alt="Project 2 Img3">
-               
-           </div>     
-        </div>
-        <a href="#"><h3>KAN Project</h3></a> 
-      </div>
+              <img src="signpost.jpg" alt="GraceField signage concept" loading="lazy">
+              <img src="calender.jpg" alt="GraceField calendar layout" loading="lazy">
+              <img src="3 copy.jpg" alt="GraceField brand poster" loading="lazy">
+              <img src="gracefiekd pres.jpg" alt="GraceField brand deck slide" loading="lazy">
+              <img src="gracefield.jpg" alt="GraceField branding mockup" loading="lazy">
+            </div>
+          </div>
+          <a href="#" class="project-link"><h3>GraceField Branding</h3></a>
+        </article>
 
-      <div class="portfolio-item" data-category="graphic-design">
-        <div class="slider">
-          <div class="slides">
-              <img src="liberty pres.jpg" alt="Project 2 Img1">
-              <img src="bottle.jpg" alt="Project 2 Img2">
-              <img src="Sign.jpg" alt="Project 2 Img3">
-              <img src="tag.jpg" alt="Project 2 Img4">
-              <img src="4.jpg" alt="Project 2 Img5">
-              <img src="kc.jpg" alt="Project 2 Img6">
-              
-           </div>     
-         </div> 
-         <a href="#"><h3>Liberty CreditProject</h3></a>
-      </div>
+        <!-- Graphic Design: KAN -->
+        <article class="portfolio-item" data-category="graphic-design">
+          <div class="slider" aria-label="KAN Project gallery">
+            <div class="slides">
+              <img src="kan new copy.jpg" alt="KAN poster" loading="lazy">
+              <img src="PSD_3 copy.jpg" alt="KAN design set" loading="lazy">
+              <img src="office.jpg" alt="KAN identity mockup" loading="lazy">
+            </div>
+          </div>
+          <a href="#" class="project-link"><h3>KAN Identity</h3></a>
+        </article>
 
-      <div class="portfolio-item1" data-category="website">
-        <img src="LoveWorld2.jpg" alt="Website Project 1" />
-        <a href="http://Loveworldteensandyouthministry.com"><h3>LoveWorld Teens And Youth Website 2</h3></a>
-      </div>
-    </div>
-    <div>
-      <div class="portfolio-item1" data-category="website">
-        <img src="LoveWorld.jpg" alt="LoveWorld" />
-        <a href="http://Loveworldteensandyouthministry.org"><h3>LoveWorld Teens And Youth Website 1</h3></a>
-      </div>
-      <div class="portfolio-item1" data-category="website">
-        <img src="LoveWorld2.jpg" alt="Website Project 1" />
-        <a href="http://Loveworldteensandyouthministry.com"><h3>LoveWorld Teens And Youth Website 2</h3></a>
-      </div>
-    </div>
+        <!-- Graphic Design: Liberty Credit -->
+        <article class="portfolio-item" data-category="graphic-design">
+          <div class="slider" aria-label="Liberty Credit gallery">
+            <div class="slides">
+              <img src="liberty pres.jpg" alt="Liberty Credit presentation slide" loading="lazy">
+              <img src="bottle.jpg" alt="Liberty product mock" loading="lazy">
+              <img src="Sign.jpg" alt="Liberty signage" loading="lazy">
+              <img src="tag.jpg" alt="Liberty product tag" loading="lazy">
+              <img src="4.jpg" alt="Collateral" loading="lazy">
+              <img src="kc.jpg" alt="Liberty KC asset" loading="lazy">
+            </div>
+          </div>
+          <a href="#" class="project-link"><h3>Liberty Credit</h3></a>
+        </article>
 
-    <div>
-      <div class="portfolio-item1" data-category="mobile-app">
-        <img src="App.jpg" alt="Mobile App Project 1" />
-        <a href="http://Ireign.app"><h3>Reign App</h3></a>
-      </div>
-      <div class="portfolio-item1" data-category="mobile-app">
-        <img src="./image/port4.jpg" alt="Mobile App Project 1" />
-        <a href=""><h3>Mobile App Project 1</h3></a>
-      </div>
-    </div>
-    <!-- Add more projects as needed -->
-  </div>
-</section>
+        <!-- Websites -->
+        <article class="portfolio-item1" data-category="website">
+          <img src="LoveWorld2.jpg" alt="LoveWorld Teens & Youth Website 2" loading="lazy" />
+          <a href="http://Loveworldteensandyouthministry.com" target="_blank" rel="noopener"><h3>LoveWorld Teens & Youth — v2</h3></a>
+        </article>
 
+        <article class="portfolio-item1" data-category="website">
+          <img src="LoveWorld.jpg" alt="LoveWorld Teens & Youth Website 1" loading="lazy" />
+          <a href="http://Loveworldteensandyouthministry.org" target="_blank" rel="noopener"><h3>LoveWorld Teens & Youth — v1</h3></a>
+        </article>
 
-    <section id="contact" class="section contact-section">
-      <h2>Contact Me</h2>
-      <form id="contact-form">
+        <!-- Mobile Apps -->
+        <article class="portfolio-item1" data-category="mobile-app">
+          <img src="App.jpg" alt="Reign mobile app" loading="lazy" />
+          <a href="http://Ireign.app" target="_blank" rel="noopener"><h3>Reign App</h3></a>
+        </article>
+
+        <article class="portfolio-item1" data-category="mobile-app">
+          <img src="./image/port4.jpg" alt="Mobile App concept 1" loading="lazy" />
+          <a href="#"><h3>Mobile App Concept</h3></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact Me</h2>
+
+      <form id="contact-form" aria-describedby="form-status">
         <div class="form-group">
           <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="from_name"
-            required
-            placeholder="Your Name"
-          />
+          <input type="text" id="name" name="from_name" required placeholder="Your name" autocomplete="name" />
         </div>
+
         <div class="form-group">
           <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="reply_to"
-            required
-            placeholder="Your Email"
-          />
+          <input type="email" id="email" name="reply_to" required placeholder="name@example.com" autocomplete="email" />
         </div>
+
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="5"
-            required
-            placeholder="Your Message"
-          ></textarea>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project…"></textarea>
         </div>
-        <button type="submit" class="btn-submit">
+
+        <button type="submit" class="btn-submit" aria-live="polite">
           <span class="btn-text">Send</span>
           <span class="btn-loading" style="display:none;">
-            <i class="fas fa-spinner fa-spin"></i> Sending...
+            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending…
           </span>
         </button>
-        <p class="form-status"></p>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
 
-  <div class="style-switcher">
+  <!-- Style Switcher -->
+  <div class="style-switcher closed" aria-label="Style switcher">
     <button class="switcher-toggle" aria-label="Open style switcher">
       <i class="fas fa-cog fa-spin"></i>
     </button>
     <div class="switcher-panel">
       <h3>Theme Colors</h3>
       <div class="colors">
-        <button class="color-btn" data-color="color-1" style="background:#FF6B6B"></button>
-        <button class="color-btn" data-color="color-2" style="background:#6BCB77"></button>
-        <button class="color-btn" data-color="color-3" style="background:#4D96FF"></button>
-        <button class="color-btn" data-color="color-4" style="background:#FFD93D"></button>
-        <button class="color-btn" data-color="color-5" style="background:#845EC2"></button>
+        <button class="color-btn" data-color="color-1" style="background:#FF6B6B" aria-label="Coral"></button>
+        <button class="color-btn" data-color="color-2" style="background:#6BCB77" aria-label="Emerald"></button>
+        <button class="color-btn" data-color="color-3" style="background:#4D96FF" aria-label="Azure"></button>
+        <button class="color-btn" data-color="color-4" style="background:#FFD93D" aria-label="Sun"></button>
+        <button class="color-btn" data-color="color-5" style="background:#845EC2" aria-label="Violet"></button>
       </div>
       <hr />
-      <h3>Mode</h3>
-      <label class="switch">
-        <input type="checkbox" id="mode-toggle" />
-        <span class="slider round"></span>
-      </label>
+      <div class="mode-toggle">
+        <span>Dark Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="mode-toggle" aria-label="Dark mode toggle" />
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
   </div>
 
-   <!-- Lightbox -->
-   <div class="lightbox" id="lightbox">
-    <span class="close" id="lightboxClose">&times;</span>
-    <span class="arrow left" id="prev">&#10094;</span>
-    <img src="" alt="Full view" id="lightboxImg">
-    <span class="arrow right" id="next">&#10095;</span>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+    <span class="close" id="lightboxClose" role="button" tabindex="0" aria-label="Close">&times;</span>
+    <span class="arrow left" id="prev" role="button" tabindex="0" aria-label="Previous">&#10094;</span>
+    <img src="" alt="Expanded portfolio image" id="lightboxImg">
+    <span class="arrow right" id="next" role="button" tabindex="0" aria-label="Next">&#10095;</span>
   </div>
 
-  <!-- Typed.js -->
+  <!-- Vendor scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-   
-  <script src="style-switcher.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.2cdn.jsdelivr.net/npm/typed.js@2.1.2"></script>
-  <script src="script.js"></script>
-  <script src="slide.js"></script>
-  <script src="type.js"></script>
 
+  <!-- App scripts -->
+  <script src="style-switcher.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="slide.js" defer></script>
+  <script src="type.js" defer></script>
 </body>
 </html>

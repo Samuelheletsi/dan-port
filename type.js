@@ -1,8 +1,19 @@
-// Initialize Typed.js for typing animation
-const typed = new Typed('.typing', {
-    strings: ["Graphic Designer","Videographer/Cinematographer", "Photographer", "Mobile App Developer", "UI/UX Designer"],
-    typeSpeed: 100,
-    backSpeed: 50,
-    backDelay: 1500,
+// Typed.js headline
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.querySelector('.typing');
+  if (!el || !window.Typed) return;
+
+  new Typed('.typing', {
+    strings: [
+      'Software Developer',
+      'UI/UX Designer',
+      'Brand & Graphic Designer',
+      'Photographer & Videographer'
+    ],
+    typeSpeed: 50,
+    backSpeed: 30,
+    backDelay: 1400,
     loop: true,
+    smartBackspace: true
   });
+});

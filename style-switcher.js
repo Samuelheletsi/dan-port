@@ -1,89 +1,91 @@
-// Select elements
+// Elements
 const styleSwitcher = document.querySelector('.style-switcher');
 const switcherToggleBtn = document.querySelector('.switcher-toggle');
 const colorButtons = document.querySelectorAll('.color-btn');
 const modeToggleCheckbox = document.getElementById('mode-toggle');
-const body = document.body;
 
-// Initially close the style switcher
+// Ensure closed by default
 styleSwitcher.classList.add('closed');
 
-// Open/close style switcher panel
+// Open/close panel
 switcherToggleBtn.addEventListener('click', () => {
   styleSwitcher.classList.toggle('closed');
 });
 
-// Apply selected theme color
-colorButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Remove active class from all buttons
-    colorButtons.forEach(b => b.classList.remove('active'));
-    // Add active class to clicked button
-    btn.classList.add('active');
-    
-    const selectedColor = btn.getAttribute('data-color');
-    applyThemeColor(selectedColor);
-  });
+// Outside click closes
+document.addEventListener('click', (e) => {
+  if (!styleSwitcher.contains(e.target) && !switcherToggleBtn.contains(e.target)) {
+    styleSwitcher.classList.add('closed');
+  }
 });
 
-// Function to apply theme color by setting CSS variable
+// Escape closes
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') styleSwitcher.classList.add('closed');
+});
+
+// Map of theme colors
+const colorsMap = {
+  'color-1': '#FF6B6B',
+  'color-2': '#6BCB77',
+  'color-3': '#4D96FF',
+  'color-4': '#FFD93D',
+  'color-5': '#845EC2'
+};
+
 function applyThemeColor(colorName) {
-  // Define colors map
-  const colorsMap = {
-    'color-1': '#FF6B6B',
-    'color-2': '#6BCB77',
-    'color-3': '#4D96FF',
-    'color-4': '#FFD93D',
-    'color-5': '#845EC2'
-  };
-  const colorValue = colorsMap[colorName] || '#FF6B6B';
-  
-  // Set CSS variables
+  const colorValue = colorsMap[colorName] || colorsMap['color-3'];
   document.documentElement.style.setProperty('--color-primary', colorValue);
   document.documentElement.style.setProperty('--color-accent', colorValue);
-  
-  // Save to localStorage for persistence
   localStorage.setItem('selectedColor', colorName);
 }
 
-// Load saved color from localStorage
-const savedColor = localStorage.getItem('selectedColor');
-if (savedColor) {
-  applyThemeColor(savedColor);
-  // Activate the saved color button
-  colorButtons.forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-color') === savedColor);
+// Handle color selection
+colorButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('active')) return;
+    colorButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyThemeColor(btn.getAttribute('data-color'));
   });
-} else {
-  // Default active color
-  colorButtons[0].classList.add('active');
-  applyThemeColor('color-1');
-}
-
-// Light/dark mode toggle
-modeToggleCheckbox.addEventListener('change', () => {
-  if (modeToggleCheckbox.checked) {
-    body.classList.add('dark');
-    localStorage.setItem('mode', 'dark');
-  } else {
-    body.classList.remove('dark');
-    localStorage.setItem('mode', 'light');
-  }
 });
 
-// Load saved mode from localStorage
-const savedMode = localStorage.getItem('mode');
-if (savedMode === 'dark') {
-  body.classList.add('dark');
-  modeToggleCheckbox.checked = true;
-} else {
-  body.classList.remove('dark');
-  modeToggleCheckbox.checked = false;
+// mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.nav');
+
+navToggle.addEventListener('click', () => {
+  const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !isExpanded);
+  nav.classList.toggle('active');
+});
+
+
+
+
+
+// Load saved color
+const savedColor = localStorage.getItem('selectedColor') || 'color-3';
+applyThemeColor(savedColor);
+colorButtons.forEach(btn => btn.classList.toggle('active', btn.getAttribute('data-color') === savedColor));
+
+// Mode toggle (html[data-theme])
+function setTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('mode', mode);
+  modeToggleCheckbox.checked = (mode === 'dark');
 }
 
-// Close style switcher on scroll
+// Init saved mode
+const savedMode = localStorage.getItem('mode') || 'light';
+setTheme(savedMode);
+
+// Toggle on change
+modeToggleCheckbox.addEventListener('change', () => {
+  setTheme(modeToggleCheckbox.checked ? 'dark' : 'light');
+});
+
+// Close on scroll for UX
 window.addEventListener('scroll', () => {
-  if (!styleSwitcher.classList.contains('closed')) {
-    styleSwitcher.classList.add('closed');
-  }
+  styleSwitcher.classList.add('closed');
 });
