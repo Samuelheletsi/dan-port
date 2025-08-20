@@ -170,7 +170,11 @@ a:hover { color: var(--color-primary); }
   box-shadow: 0 8px 22px var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
 }
 .portfolio-item:hover, .portfolio-item1:hover { transform: translateY(-6px); box-shadow: 0 16px 32px var(--shadow); }
-.portfolio-item img, .portfolio-item1 img { width: 100%; display: block; }
+.portfolio-item img, .portfolio-item1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .portfolio-item h3, .portfolio-item1 h3 { text-align: center; padding: 12px; font-size: 1rem; color: var(--text-color); }
 
 /* ============================
@@ -216,4 +220,13 @@ input:focus, textarea:focus { border-color: var(--color-primary); box-shadow: 0 
   .nav.open { max-height: 240px; }
   .nav-toggle { display: inline-flex; background: transparent; border: 0; color: var(--text-color); font-size: 1.4rem; cursor: pointer; }
   .main-content { margin-left: 0; padding: 24px; }
+}
+
+/* ============================
+   Global image rule
+============================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

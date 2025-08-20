@@ -18,19 +18,18 @@
   <!-- Favicon -->
   <link rel="icon" href="image/sd.jpg" />
 
-  <!-- Fonts & Icons -->
+  <!-- Fonts & Icons (kept both as in your original) -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SomeHash" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 
   <!-- Core CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/slide.css" />
   <link rel="stylesheet" href="css/style-switcher.css" />
 
-  <!-- NProgress (CSS only; JS loaded at end) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" integrity="sha512-bQ1iG8d2g9+f5H7P6JHnUOQwq0S1m0+oZr7eGg8c9A2v+o0lqYQe2eSVg1x3v5YxC8W3bO5kE0u3oWbL1LQ3JQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- NProgress (CSS only) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Prevent theme FOUC: set theme ASAP -->
   <script>
@@ -72,21 +71,21 @@
       <h2>Daniel</h2>
     </div>
 
-    <!-- HTML -->
-<button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-  <i class="fas fa-bars"></i>
-</button>
+    <!-- Mobile menu toggle -->
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
 
-<nav class="nav">
-  <ul>
-    <li><a href="#home" class="nav-link">Home</a></li>
-    <li><a href="#about" class="nav-link">About</a></li>
-    <li><a href="#services" class="nav-link">Services</a></li>
-    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-    <li><a href="#contact" class="nav-link">Contact</a></li>
-  </ul>
-</nav>
-
+    <!-- Navigation -->
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
   </aside>
 
   <!-- Main -->
@@ -218,7 +217,7 @@
         </article>
 
         <article class="portfolio-item1" data-category="mobile-app">
-          <img src="./image/port4.jpg" alt="Mobile App concept 1" loading="lazy" />
+          <img src="image/port4.jpg" alt="Mobile App concept 1" loading="lazy" />
           <a href="#"><h3>Mobile App Concept</h3></a>
         </article>
       </div>
@@ -293,10 +292,13 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-  <!-- App scripts -->
+  <!-- App scripts (all kept; added portfolio.js + optional image-dimensions.js) -->
   <script src="js/style-switcher.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/slide.js" defer></script>
   <script src="js/type.js" defer></script>
+  <script src="js/portfolio.js" defer></script>
+  <!-- Optional: auto-fill width/height for <img> after load -->
+  <script src="js/image-dimensions.js" defer></script>
 </body>
 </html>
